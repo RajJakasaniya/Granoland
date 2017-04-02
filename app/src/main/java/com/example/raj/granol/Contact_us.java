@@ -1,94 +1,83 @@
 package com.example.raj.granol;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
+import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    private ViewFlipper mViewFlipper;
+/**
+ * Created by raj on 31/3/17.
+ */
 
-    public NavigationView navigationView;
-    private GestureDetector mGestureDetector;
-    int[] resources = {
-           R.drawable.slider,
-            R.drawable.unnamed,
-            R.drawable.landgrace,
-            R.drawable.dc
-    };
+public class Contact_us extends MainActivity implements NavigationView.OnNavigationItemSelectedListener {
+    TextView dj,kb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
-        SaveImage(img);
-        mViewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
-
-        // Add all the images to the ViewFlipper
-        for (int i = 0; i < resources.length; i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(resources[i]);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            mViewFlipper.addView(imageView);
-        }
-        CustomGestureDetector customGestureDetector = new CustomGestureDetector();
-        mGestureDetector = new GestureDetector(this, customGestureDetector);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        mViewFlipper.setAutoStart(true);
-        mViewFlipper.setFlipInterval(5000);
+        setContentView(R.layout.contact);
 
 
-        mViewFlipper.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-            public void onSwipeRight() {
 
-                mViewFlipper.showNext();
-            }
-            public void onSwipeLeft() {
-                mViewFlipper.showPrevious();
+        dj=(TextView)findViewById(R.id.dj);
+        kb=(TextView)findViewById(R.id.kb);
+
+        String udata="+91 7069600011";
+        SpannableString content = new SpannableString(udata);
+        content.setSpan(new UnderlineSpan(), 0, udata.length(), 0);//where first 0 shows the starting and udata.length() shows the ending span.if you want to span only part of it than you can change these values like 5,8 then it will underline part of it.
+        dj.setText(content);
+
+        String udat="+91 7069600012";
+        SpannableString cont = new SpannableString(udat);
+        cont.setSpan(new UnderlineSpan(), 0, udat.length(), 0);//where first 0 shows the starting and udata.length() shows the ending span.if you want to span only part of it than you can change these values like 5,8 then it will underline part of it.
+        kb.setText(cont);
+
+        dj.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                Intent i = new Intent(Intent.ACTION_DIAL);
+                String p = "tel:+917069600011";
+                i.setData(Uri.parse(p));
+                startActivity(i);
             }
         });
 
-
-        setSupportActionBar(toolbar);
+        kb.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                Intent i = new Intent(Intent.ACTION_DIAL);
+                String p = "tel:+917069600012";
+                i.setData(Uri.parse(p));
+                startActivity(i);
+            }
+        });
+        Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbarcu);
+        setSupportActionBar(mtoolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -98,32 +87,14 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, mtoolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
-    class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-
-            // Swipe left (next)
-            if (e1.getX() > e2.getX()) {
-                mViewFlipper.showNext();
-            }
-
-            // Swipe right (previous)
-            if (e1.getX() < e2.getX()) {
-                mViewFlipper.showPrevious();
-            }
-
-            return super.onFling(e1, e2, velocityX, velocityY);
-        }
     }
     @Override
     public void onBackPressed() {
@@ -163,81 +134,41 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if(item.isChecked()) item.setChecked(false);
-        else item.setChecked(true);
 
         if (id == R.id.home) {
-
+            Intent in=new Intent(Contact_us.this,MainActivity.class);
+            startActivity(in);
         } else if (id == R.id.collection) {
-
-            Intent in=new Intent(MainActivity.this,Collection.class);
+            Intent in=new Intent(Contact_us.this,Collection.class);
             startActivity(in);
         } else if (id == R.id.location) {
-
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                     Uri.parse("http://maps.google.com/maps?daddr=22.736256,70.978265"));
             intent.setPackage("com.google.android.apps.maps");
             startActivity(intent);
         } else if (id == R.id.about) {
 
-            Intent in=new Intent(MainActivity.this,About_us.class);
+            Intent in=new Intent(Contact_us.this,About_us.class);
             startActivity(in);
         } else if (id == R.id.nav_share) {
-
             Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Granoland Tiles LLP");
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Tiling elegance redefined click here to visit https://xyz.com/ ");
             sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
-            sharingIntent.setType("image/jpg");
+            sharingIntent.setType("image/*");
             sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
-            /*try {
-                Uri imageUri = null;
-                try {
-                    imageUri = Uri.parse(MediaStore.Images.Media.insertImage(MainActivity.this.getContentResolver(),
-                            BitmapFactory.decodeResource(getResources(), R.drawable.hi), null, null));
-                } catch (NullPointerException e) {
-                }
-
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("**");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "your text");
-
-                shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-
-                startActivity(shareIntent);
-            } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(MainActivity.this, "no app fount", Toast.LENGTH_LONG).show();
-            }*/
-
-        //shareImageWhatsApp();
-
         } else if(id==R.id.contact) {
 
-            Intent in=new Intent(MainActivity.this,Contact_us.class);
-            startActivity(in);
         }else if(id==R.id.guide) {
-
-            Intent in=new Intent(MainActivity.this,Guide.class);
+            Intent in=new Intent(Contact_us.this,Guide.class);
             startActivity(in);
         }else if(id==R.id.brochures) {
-           //Download brochures procedure
+            //Download brochures procedure
 
             haveStoragePermission();
-            /*String url = "https://aglasiangranito.com/catalogue/Ceramic%20Wall%20&%20Floor%20Collection.pdf";//URL to download Brochures
-            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-            request.setDescription("Brochures");
-            request.setTitle("GranoLand");
-                request.allowScanningByMediaScanner();
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "GL_Brochures.pdf");
-
-// get download service and enqueue file
-            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            manager.enqueue(request);*/
-
         }else if (id == R.id.rating) {
 
         }
@@ -246,8 +177,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
     public  boolean haveStoragePermission() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -283,7 +212,6 @@ public class MainActivity extends AppCompatActivity
             manager.enqueue(request);
         }
     }
-
     private void SaveImage(Bitmap finalBitmap) {
 
         String state = Environment.getExternalStorageState();

@@ -5,4 +5,24 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    
+    <string-array name="header_titles">
+        <item>Double Charge (600x600mm)</item>
+        <item>Outdoor Color Body (600x600mm)</item>
+        <item>PGVT/GVT Color Body (600x1200mm)</item>
+    </string-array>
+    <string-array name="h1_items">
+        <item>Sparkle Series</item>
+        <item>Natural Series</item>
+    </string-array>
+    <string-array name="h2_items">
+        <item>10mm</item>
+        <item>16mm</item>
+        <item>20mm</item>
+    </string-array>
+    <string-array name="h3_items">
+        <item>Glossy Series</item>
+        <item>Sugar Series</item>
+        <item>Silky Matte Series</item>
+    </string-array>
 </resources>

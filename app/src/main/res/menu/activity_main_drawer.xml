@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/nav_group_1"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/home"
+            android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
         <item
             android:id="@+id/about"
+            android:checked="false"
             android:icon="@drawable/about96"
             android:title="About_us" />
         <item
             android:id="@+id/collection"
+            android:checked="false"
             android:icon="@drawable/collection"
             android:title="Products" />
         <item
             android:id="@+id/location"
+            android:checked="false"
             android:icon="@drawable/location"
             android:title="Location" />
         <item
+            android:id="@+id/guide"
+            android:checked="false"
+            android:icon="@drawable/guide"
+            android:title="Guide" />
+        <item
+            android:id="@+id/brochures"
+            android:checked="false"
+            android:icon="@drawable/brochure1"
+            android:title="Brochures" />
+        <item
             android:id="@+id/contact"
+            android:checked="false"
             android:icon="@drawable/contactus"
             android:title="Contact_us" />
 
@@ -31,12 +47,14 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
+                android:checkable="false"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
                 android:id="@+id/rating"
-                android:icon="@drawable/rating96"
-                android:title="Rating" />
+                android:icon="@drawable/enq"
+                android:title="Enquiry"
+                android:checkable="false"/>
         </menu>
     </item>
 

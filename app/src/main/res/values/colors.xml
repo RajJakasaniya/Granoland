@@ -155,6 +155,12 @@
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
 
+
+    <color name="green_temp">#23A96E</color>
+    <color name="green_dark">#159204</color>
+    <color name="bright_green">#02D8B0</color>
+    <color name="button_green">#10a54a</color>
+
     <color name="white">#ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="date_color">#999999</color>
