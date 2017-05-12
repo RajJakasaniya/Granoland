@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -40,7 +41,8 @@ Button spec,calc;
         setContentView(R.layout.guide);
         Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbarg);
         setSupportActionBar(mtoolbar);
-
+        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
+        SaveImage(img);
         calc=(Button)findViewById(R.id.calc);
         spec=(Button)findViewById(R.id.spec);
         calc.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,8 @@ Button spec,calc;
         spec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i=new Intent(Guide.this,specs.class);
+                startActivity(i);
             }
         });
 
@@ -74,6 +77,8 @@ Button spec,calc;
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.getMenu().findItem(R.id.home).setChecked(false);
+        navigationView.getMenu().findItem(R.id.guide).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -170,9 +175,12 @@ Button spec,calc;
         }else if(id==R.id.brochures) {
             //Download brochures procedure
 
-            haveStoragePermission();
+            if(haveStoragePermission()) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
         }else if (id == R.id.rating) {
-
+            Intent intent=new Intent(Guide.this,Enquiry.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

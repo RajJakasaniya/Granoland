@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity
     public NavigationView navigationView;
     private GestureDetector mGestureDetector;
     int[] resources = {
-           R.drawable.slider,
-            R.drawable.unnamed,
-            R.drawable.landgrace,
-            R.drawable.dc
+            R.drawable.slider,
+           R.drawable.slider1,
+            R.drawable.slider2,
+            R.drawable.slider3
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < resources.length; i++) {
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(resources[i]);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            //imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             mViewFlipper.addView(imageView);
         }
         CustomGestureDetector customGestureDetector = new CustomGestureDetector();
@@ -127,12 +127,12 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        } else {*/
+            finish();
+        //}
     }
 
     @Override
@@ -163,8 +163,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if(item.isChecked()) item.setChecked(false);
-        else item.setChecked(true);
 
         if (id == R.id.home) {
 
@@ -239,11 +237,13 @@ public class MainActivity extends AppCompatActivity
             manager.enqueue(request);*/
 
         }else if (id == R.id.rating) {
-
+            Intent intent=new Intent(MainActivity.this,Enquiry.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        navigationView.getMenu().findItem(R.id.home).setChecked(true);
         return true;
     }
 
@@ -253,6 +253,7 @@ public class MainActivity extends AppCompatActivity
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
                 Log.e("Permission error","You have permission");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 return true;
             } else {
 
@@ -263,6 +264,7 @@ public class MainActivity extends AppCompatActivity
         }
         else { //you dont need to worry about these stuff below api level 23
             Log.e("Permission error","You already have the permission");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             return true;
         }
     }

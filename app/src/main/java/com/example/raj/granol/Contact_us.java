@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -76,6 +77,8 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
                 startActivity(i);
             }
         });
+        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
+        SaveImage(img);
         Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbarcu);
         setSupportActionBar(mtoolbar);
 
@@ -94,6 +97,8 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.getMenu().findItem(R.id.home).setChecked(false);
+        navigationView.getMenu().findItem(R.id.contact).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
     }
     @Override
@@ -168,9 +173,12 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
         }else if(id==R.id.brochures) {
             //Download brochures procedure
 
-            haveStoragePermission();
+            if(haveStoragePermission()) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
         }else if (id == R.id.rating) {
-
+            Intent intent=new Intent(Contact_us.this,Enquiry.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

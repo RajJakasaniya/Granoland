@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -46,18 +47,23 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
 
         expandableListView=(ExpandableListView)findViewById(R.id.exp_listview);
         List<String> headings=new ArrayList<String>();
+        List<String> L0=new ArrayList<String>();
         List<String> L1=new ArrayList<String>();
         List<String> L2=new ArrayList<String>();
         List<String> L3=new ArrayList<String>();
 
         HashMap<String,List<String>> childList = new HashMap<String, List<String>>();
         String heading_items[] = getResources().getStringArray(R.array.header_titles);
+        String l0[] = getResources().getStringArray(R.array.h0_items);
         String l1[] = getResources().getStringArray(R.array.h1_items);
         String l2[] = getResources().getStringArray(R.array.h2_items);
         String l3[] = getResources().getStringArray(R.array.h3_items);
 
         for(String title :heading_items){
             headings.add(title);
+        }
+        for(String title :l0){
+            L0.add(title);
         }
         for(String title :l1){
             L1.add(title);
@@ -68,13 +74,40 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
         for(String title :l3){
             L3.add(title);
         }
-        childList.put(headings.get(0),L1);
-        childList.put(headings.get(1),L2);
-        childList.put(headings.get(2),L3);
+        childList.put(headings.get(0),L0);
+        childList.put(headings.get(1),L1);
+        childList.put(headings.get(2),L2);
+        childList.put(headings.get(3),L3);
 
-        MyAdapter myadapter=new MyAdapter(this,headings,childList);
+        final MyAdapter myadapter=new MyAdapter(this,headings,childList);
         expandableListView.setAdapter(myadapter);
 
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                // TODO Auto-generated method stub
+
+                final String selected = (String) myadapter.getChild(
+                        groupPosition, childPosition);
+
+                // Switch case to open selected child element activity on child element selection.
+
+                Intent i = new Intent(Collection.this,display.class);
+                i.putExtra("selected", selected);
+                startActivity(i);
+
+                return true;
+            }
+        });
+
+
+
+
+
+        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
+        SaveImage(img);
 
         Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbarc);
         setSupportActionBar(mtoolbar);
@@ -94,6 +127,8 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.getMenu().findItem(R.id.home).setChecked(false);
+        navigationView.getMenu().findItem(R.id.collection).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -168,9 +203,12 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
         }else if(id==R.id.brochures) {
             //Download brochures procedure
 
-            haveStoragePermission();
+            if(haveStoragePermission()) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
         }else if (id == R.id.rating) {
-
+            Intent intent=new Intent(Collection.this,Enquiry.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

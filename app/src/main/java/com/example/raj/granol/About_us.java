@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -41,7 +42,8 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
 
-
+        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
+        SaveImage(img);
 
         Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbara);
         setSupportActionBar(mtoolbar);
@@ -62,6 +64,8 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.getMenu().findItem(R.id.home).setChecked(false);
+        navigationView.getMenu().findItem(R.id.about).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -124,7 +128,7 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Granoland Tiles LLP");
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Tiling elegance redefined click here to visit https://xyz.com/ ");
             sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
-            sharingIntent.setType("image/*");
+            sharingIntent.setType("image/jpg");
             sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
@@ -137,9 +141,12 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
         }else if(id==R.id.brochures) {
             //Download brochures procedure
 
-            haveStoragePermission();
+            if(haveStoragePermission()){
+                ActivityCompat.requestPermissions(About_us.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
         }else if (id == R.id.rating) {
-
+            Intent intent=new Intent(About_us.this,Enquiry.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
