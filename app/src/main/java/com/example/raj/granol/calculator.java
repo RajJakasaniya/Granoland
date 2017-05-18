@@ -19,10 +19,10 @@ import android.widget.Toast;
  */
 
 public class calculator extends MainActivity {
-    private static final String[]paths = {"Twin charge(600x600)","Outdoor(600x600)", "600x900","600x1200"};//in mm (twin category 4 tiles) (Outdoor category 2 tiles) (2nd category 3) (3rd category 2)
+    private static final String[]paths = {"600x600mm", "600x900mm","600x1200mm"};//in mm (twin category 4 tiles) (Outdoor category 2 tiles) (2nd category 3) (3rd category 2)
     EditText length,breadth;
-    Spinner len,bread;
-    private static final String[]units={ "inches" , "feet","cm","mm"};
+    Spinner len,bread,spinner;
+    private static final String[]units={ "inch" , "ft","cm","mm"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,7 @@ public class calculator extends MainActivity {
 
         Toolbar toolbarc = (Toolbar) findViewById(R.id.toolbarcalc);
         setSupportActionBar(toolbarc);
-        Spinner spinner=(Spinner)findViewById(R.id.spin2);
+        spinner=(Spinner)findViewById(R.id.spin2);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(calculator.this,
                 android.R.layout.simple_spinner_item,paths);
 
@@ -47,6 +47,8 @@ public class calculator extends MainActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         len.setAdapter(adapter2);
         bread.setAdapter(adapter2);
+        len.setSelection(2);
+        bread.setSelection(2);
 
         Button bt=(Button)findViewById(R.id.calculate);
         final TextView tile=(TextView)findViewById(R.id.tiles);
@@ -56,8 +58,66 @@ public class calculator extends MainActivity {
             public void onClick(View v) {
                 if(length.getText().toString()!="" && breadth.getText().toString()!="") {
 
-                    tile.setText("TILES NEEDED       yoo        Nos");
-                    box.setText("BOX NEEDED       hi        Nos");
+                    double l=0,b=0,area=0,t_area=0,t_n,box_n,t_b=0;
+
+                    switch (len.getSelectedItem().toString()){
+                        case "inch":
+                            l=Double.valueOf(length.getText().toString());
+                            l=l*(25.4);
+                            break;
+                        case "ft":
+                            l=Double.valueOf(length.getText().toString());
+                            l=l*(304.8);
+                            break;
+                        case "cm":
+                            l=Double.valueOf(length.getText().toString());
+                            l=l*10;
+                            break;
+                        case "mm":
+                            l=Double.valueOf(length.getText().toString());
+                            break;
+                    }
+
+                    switch (bread.getSelectedItem().toString()){
+                        case "inch":
+                            b=Double.valueOf(breadth.getText().toString());
+                            b=b*(25.4);
+                            break;
+                        case "ft":
+                            b=Double.valueOf(breadth.getText().toString());
+                            b=b*(304.8);
+                            break;
+                        case "cm":
+                            b=Double.valueOf(breadth.getText().toString());
+                            b=b*10;
+                            break;
+                        case "mm":
+                            b=Double.valueOf(breadth.getText().toString());
+                            break;
+                    }
+
+                    switch (spinner.getSelectedItem().toString()){
+                        case "600x600mm":
+                            t_area=(360000);
+                            t_b=4;
+                            break;
+                        case "600x900mm":
+                            t_area=(540000);
+                            t_b=3;
+                            break;
+                        case "600x1200mm":
+                            t_area=(720000);
+                            t_b=2;
+                            break;
+                    }
+
+                    area=l*b;
+
+                    t_n=(int)(area/t_area);
+                    box_n=(int)(t_n/t_b);
+
+                    tile.setText("TILES NEEDED       "+ t_n +"        Nos");
+                    box.setText("BOX NEEDED       "+ box_n +"        Nos");
                 }else {
                     Toast.makeText(calculator.this, "Please fill all the Details", Toast.LENGTH_LONG).show();
                 }
@@ -79,8 +139,9 @@ public class calculator extends MainActivity {
 
         //noinspection SimplifiableIfStatement
         if (id != R.id.action_settings) {
-            Intent i=new Intent(calculator.this,MainActivity.class);
+            Intent i=new Intent(calculator.this,Guide.class);
             startActivity(i);
+            finish();
             return true;
         }
 
@@ -89,6 +150,7 @@ public class calculator extends MainActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        super.startActivity(new Intent(calculator.this,Guide.class));
+        finish();
     }
 }

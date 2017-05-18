@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarlay"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/DarkCyan"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Laying Instructions"
+        android:textColor="@color/Black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        style="@style/sectionHeader" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. For proper laying of tiles. hire an experienced mason."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2. Before fixing tiles must be soaked in water for about an hour. Soaking of tiles is not required in case of fixing with chemical adhesive."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3. The wall surface is to be rough plastered using mortar composed of one part cement and two parts sand."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4. On the wall surface, a coat of very thin cement slurry should be applied by brush at the time of fixing the tiles."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5. The mortar is to be spread on the back side of the tile. This should be composed of one part cement and two parts sand."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="6. Tiles so placed in the mortar should be gently raped to ensure total mortar contact."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="7. Shade and Size variation is an inherent characteristic of ceramic tiles. Before fixing, the tiles should be mixed separate boxes to have random blending and avoid obvious patches."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="8. Variation of any should be brought to our notice prior to laying tiles."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="9. Mixing of time with cement, careless mixing or deliberate use of rich mixes will lead lead to wall tile failure."
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textAllCaps="false" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

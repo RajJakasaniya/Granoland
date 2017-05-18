@@ -8,6 +8,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,17 +37,16 @@ import java.io.FileOutputStream;
  */
 
 public class Guide extends MainActivity implements NavigationView.OnNavigationItemSelectedListener {
-Button spec,calc;
+Button spec,calc,laying;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guide);
         Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbarg);
         setSupportActionBar(mtoolbar);
-        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
-        SaveImage(img);
         calc=(Button)findViewById(R.id.calc);
         spec=(Button)findViewById(R.id.spec);
+        laying=(Button)findViewById(R.id.laying);
         calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,11 +55,18 @@ Button spec,calc;
             }
         });
 
+        laying.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Guide.this,Laying.class);
+                startActivity(i);
+            }
+        });
+
         spec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(Guide.this,specs.class);
-                startActivity(i);
+
             }
         });
 
@@ -65,8 +74,28 @@ Button spec,calc;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(checkInternet()){
+                    String em = "sales@granoland.com";/* Your email address here */
+                    //String subject = "Enquiry Form";/* Your subject here */
+                    String[] CC = {"ashok@granoland.com","jaydeep@granoland.com"};
+                    /*String body = "Name :- "+name.getText().toString() + "\n" + "Email id :- "+ email.getText().toString() + "\n" +
+                            "Country :- "+country.getSelectedItem().toString() + "\n" +
+                            "State :- "+state.getText().toString() + "\n" +
+                            "City :- "+city.getText().toString() + "\n" +
+                            "Order Details :- "+description.getText().toString() + "\n";*/
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + em));
+                    //emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    emailIntent.putExtra(Intent.EXTRA_CC, CC);
+                    //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+                    try {
+                        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                        finish();
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(Guide.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(Guide.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -84,12 +113,8 @@ Button spec,calc;
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        super.startActivity(new Intent(Guide.this,MainActivity.class));
+        finish();
     }
 
     @Override
@@ -124,18 +149,22 @@ Button spec,calc;
         if (id == R.id.home) {
             Intent in=new Intent(Guide.this,MainActivity.class);
             startActivity(in);
+            finish();
         } else if (id == R.id.collection) {
             Intent in=new Intent(Guide.this,Collection.class);
             startActivity(in);
+            finish();
         } else if (id == R.id.location) {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                     Uri.parse("http://maps.google.com/maps?daddr=22.736256,70.978265"));
             intent.setPackage("com.google.android.apps.maps");
             startActivity(intent);
+            finish();
         } else if (id == R.id.about) {
 
             Intent in=new Intent(Guide.this,About_us.class);
             startActivity(in);
+            finish();
         } else if (id == R.id.nav_share) {
             Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -145,7 +174,7 @@ Button spec,calc;
             sharingIntent.setType("image/png");
             sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
-
+            finish();
             /*try {
                 Uri imageUri = null;
                 try {
@@ -170,17 +199,13 @@ Button spec,calc;
         } else if(id==R.id.contact) {
             Intent in=new Intent(Guide.this,Contact_us.class);
             startActivity(in);
+            finish();
         }else if(id==R.id.guide) {
 
-        }else if(id==R.id.brochures) {
-            //Download brochures procedure
-
-            if(haveStoragePermission()) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-            }
         }else if (id == R.id.rating) {
             Intent intent=new Intent(Guide.this,Enquiry.class);
             startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -210,7 +235,7 @@ Button spec,calc;
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
             //you have the permission now.
-            String url = "https://aglasiangranito.com/catalogue/Ceramic%20Wall%20&%20Floor%20Collection.pdf";
+            String url = "https://firebasestorage.googleapis.com/v0/b/granoland-ee8e9.appspot.com/o/Brochure.pdf?alt=media&token=10b27102-b8be-4fe3-98ae-50eb2ba63530";
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
             request.setDescription("Brochures");
             request.setTitle("GranoLand");
@@ -222,34 +247,17 @@ Button spec,calc;
             manager.enqueue(request);
         }
     }
-    private void SaveImage(Bitmap finalBitmap) {
-
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-
-            String root = Environment.getExternalStorageDirectory().toString();
-            File myDir = new File(root + "/saved_images");
-            myDir.mkdirs();
-            String fname = "image.jpg";
-            File file = new File(myDir, fname);
-            if (file.exists()) file.delete();
-            try {
-                FileOutputStream out = new FileOutputStream(file);
-                finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-                out.flush();
-                out.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null,
-                    new MediaScannerConnection.OnScanCompletedListener() {
-                        public void onScanCompleted(String path, Uri uri) {
-                            Log.e("ExternalStorage", "Scanned " + path + ":");
-                            Log.e("ExternalStorage", "-> uri=" + uri);
-                        }
-                    });
+    public boolean checkInternet(){
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
         }
+        else {
+            connected = false;
+        }
+        return connected;
     }
 }

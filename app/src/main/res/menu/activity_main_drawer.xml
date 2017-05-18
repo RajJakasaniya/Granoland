@@ -10,6 +10,12 @@
             android:title="Home" />
 
         <item
+            android:id="@+id/gallery"
+            android:checked="false"
+            android:icon="@drawable/gallery"
+            android:title="3D Gallery" />
+
+        <item
             android:id="@+id/collection"
             android:checked="false"
             android:icon="@drawable/collection"
@@ -41,11 +47,7 @@
                 android:id="@+id/location"
                 android:icon="@drawable/location"
                 android:title="Location" />
-            <item
-                android:id="@+id/brochures"
-                android:checked="false"
-                android:icon="@drawable/brochure1"
-                android:title="Brochures" />
+
             <item
                 android:id="@+id/nav_share"
                 android:checkable="false"

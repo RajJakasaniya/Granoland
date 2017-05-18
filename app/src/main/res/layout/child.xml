@@ -10,7 +10,7 @@
         android:textStyle="bold"
         android:textColor="@color/DarkRed"
         android:background="@color/Aqua"
-        android:textSize="15dp"
+        android:textSize="19dp"
         android:gravity="center_vertical"
         />
 </LinearLayout>

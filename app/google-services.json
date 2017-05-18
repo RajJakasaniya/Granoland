@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "475599541288",
+    "firebase_url": "https://granoland-ee8e9.firebaseio.com",
+    "project_id": "granoland-ee8e9",
+    "storage_bucket": "granoland-ee8e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475599541288:android:3a9f996dace6319f",
+        "android_client_info": {
+          "package_name": "com.example.raj.granol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475599541288-u5f2oj20dk7h9cvs3hkhqme0l6o03ctv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.raj.granol",
+            "certificate_hash": "d636a1f51d40e6e81dc32038202e7105d9073a29"
+          }
+        },
+        {
+          "client_id": "475599541288-9sih76o5o1uni7kp9t9aa0gnaiv85h2v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf7rsK1FV_p5qBjOmWMi5XrlP10S7gaDE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475599541288-9sih76o5o1uni7kp9t9aa0gnaiv85h2v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -30,6 +30,20 @@
         android:shadowRadius="5"
         />
     <Button
+        android:id="@+id/laying"
+        android:text="Laying Instructions"
+        android:layout_marginBottom="5dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/buttonshape"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        />
+    <Button
         android:id="@+id/calc"
         android:text="Calculator"
         android:layout_marginBottom="5dp"

@@ -5,14 +5,18 @@ import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -58,9 +62,18 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!prefs.getBoolean("firstTime", false)) {
+            // <---- run your one time code here
+            Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
+            SaveImage(img);
 
-        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
-        SaveImage(img);
+            // mark first time has runned.
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }
+
         mViewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
 
         // Add all the images to the ViewFlipper
@@ -94,8 +107,28 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(checkInternet()){
+                    String em = "sales@granoland.com";/* Your email address here */
+                    //String subject = "Enquiry Form";/* Your subject here */
+                    String[] CC = {"ashok@granoland.com","jaydeep@granoland.com"};
+                    /*String body = "Name :- "+name.getText().toString() + "\n" + "Email id :- "+ email.getText().toString() + "\n" +
+                            "Country :- "+country.getSelectedItem().toString() + "\n" +
+                            "State :- "+state.getText().toString() + "\n" +
+                            "City :- "+city.getText().toString() + "\n" +
+                            "Order Details :- "+description.getText().toString() + "\n";*/
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + em));
+                    //emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    emailIntent.putExtra(Intent.EXTRA_CC, CC);
+                    //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+                    try {
+                        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                        finish();
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -125,13 +158,23 @@ public class MainActivity extends AppCompatActivity
             return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
+    public void exitAppMethod(){
+
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+
     @Override
     public void onBackPressed() {
         /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {*/
-            finish();
+        exitAppMethod();
+
         //}
     }
 
@@ -220,22 +263,6 @@ public class MainActivity extends AppCompatActivity
 
             Intent in=new Intent(MainActivity.this,Guide.class);
             startActivity(in);
-        }else if(id==R.id.brochures) {
-           //Download brochures procedure
-
-            haveStoragePermission();
-            /*String url = "https://aglasiangranito.com/catalogue/Ceramic%20Wall%20&%20Floor%20Collection.pdf";//URL to download Brochures
-            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-            request.setDescription("Brochures");
-            request.setTitle("GranoLand");
-                request.allowScanningByMediaScanner();
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "GL_Brochures.pdf");
-
-// get download service and enqueue file
-            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            manager.enqueue(request);*/
-
         }else if (id == R.id.rating) {
             Intent intent=new Intent(MainActivity.this,Enquiry.class);
             startActivity(intent);
@@ -273,16 +300,20 @@ public class MainActivity extends AppCompatActivity
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
             //you have the permission now.
-            String url = "https://aglasiangranito.com/catalogue/Ceramic%20Wall%20&%20Floor%20Collection.pdf";
-            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-            request.setDescription("Brochures");
-            request.setTitle("GranoLand");
-            request.allowScanningByMediaScanner();
-            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            switch (requestCode) {
+                case 1:
+                    String url = "https://firebasestorage.googleapis.com/v0/b/granoland-ee8e9.appspot.com/o/Brochure.pdf?alt=media&token=10b27102-b8be-4fe3-98ae-50eb2ba63530";
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                    request.setDescription("Brochures");
+                    request.setTitle("GranoLand");
+                    request.allowScanningByMediaScanner();
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "GL_Brochures.pdf");
-            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            manager.enqueue(request);
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "GL_Brochures.pdf");
+                    DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                    manager.enqueue(request);
+                    break;
+            }
         }
     }
 
@@ -315,5 +346,18 @@ public class MainActivity extends AppCompatActivity
                         }
                     });
         }
+    }
+    public boolean checkInternet(){
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else {
+            connected = false;
+        }
+        return connected;
     }
 }

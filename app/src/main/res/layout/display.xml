@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbardisp"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/DarkCyan"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:id="@+id/download"
+        android:text="Download"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:background="@drawable/buttonshape"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarcalc"
+            android:layout_width="match_parent"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/DarkCyan"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".40"
+        android:paddingTop="20dp"
+        android:text="Length of Area :- "
+        android:paddingLeft="20dp"
+        android:textColor="@color/Black"
+        android:textSize="20dp"/>
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".30"
+        android:id="@+id/length"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
+        android:textSize="25dp"
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:spinnerMode="dropdown"
+        android:id="@+id/len"
+        android:layout_height="match_parent"
+        android:layout_weight=".30" />
+</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".40"
+                    android:paddingTop="20dp"
+                    android:text="Breadth of Area :- "
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/Black"
+                    android:textSize="20dp"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".30"
+                    android:id="@+id/breadth"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="@color/Black"
+                    android:textSize="25dp"
+                    />
+                <Spinner
+                    android:layout_width="0dp"
+                    android:id="@+id/bread"
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown"
+                    android:layout_weight=".30" />
+            </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".40"
+            android:text="Tile Size :- "
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/Black"
+            android:textSize="20dp"/>
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".60"
+            android:id="@+id/spin2"
+            android:spinnerMode="dropdown"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/calculate"
+        android:text="Calculate"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/buttonshape"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/tiles"
+        android:layout_marginTop="10dp"
+        android:text="TILES NEEDED       0.0        Nos"
+        android:textSize="20dp"
+        android:textColor="@color/Black"
+        android:padding="15dp"
+        android:layout_marginLeft="10dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/box"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:text="BOX NEEDED       0.0        Nos"
+        android:textSize="20dp"
+        android:textColor="@color/Black"
+        android:layout_marginLeft="10dp"
+        />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
