@@ -34,13 +34,10 @@ public class Laying extends MainActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id != R.id.action_settings) {
+
             Intent i=new Intent(Laying.this,Guide.class);
             startActivity(i);
             return super.onOptionsItemSelected(item);
-        }
-
-        return true;
     }
 
     @Override

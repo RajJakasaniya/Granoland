@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">GranoLand</string>
 
+    <string name="str">&#8226; To launch innovative and world class products to help customers realize their dreams\n &#8226; To manufacture products of the highest quality, creating industry benchmark\n &#8226; To be fast and flexible, to be able to grasp opportunities in the fast changing world\n &#8226; To be transparent and fair to customers, suppliers and employees in all our dealings\n</string>
+
+    <string name="front">With over 7 years of leadership experience of Mr. Kishorbhai A bhalodiya and Mr. Dharmnerdra A. Jakasaniya (Directors of Landgrace Ceramic Pvt. Ltd.) has given ignition to Granoland. GRANOLAND is the only premium tile brand in India. That is why we are known as trend setters within the industry. This is because, since our inception in 2015, we have remained loyal to our Core values of</string>
+    <string name="back">“innovation, product quality and customer service”.</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

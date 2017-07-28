@@ -57,7 +57,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
         Log.e("Yoo",upload.getUrl());
         Glide.with(context).load(upload.getUrl()).placeholder(R.drawable.dc)
-                .error(R.drawable.final_logo).fitCenter().into(holder.imageView);
+                .error(R.drawable.dc).fitCenter().into(holder.imageView);
     }
 
     @Override

@@ -207,14 +207,12 @@ public class display extends MainActivity {
             int id = item.getItemId();
 
             //noinspection SimplifiableIfStatement
-            if (id != R.id.action_settings) {
+
                 Intent i=new Intent(display.this,Collection.class);
                 startActivity(i);
                 finish();
                 return true;
-            }
 
-            return super.onOptionsItemSelected(item);
         }
 
         @Override

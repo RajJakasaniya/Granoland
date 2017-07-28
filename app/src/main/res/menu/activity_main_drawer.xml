@@ -30,12 +30,12 @@
             android:id="@+id/about"
             android:checked="false"
             android:icon="@drawable/about96"
-            android:title="About_us" />
+            android:title="Company Profile" />
         <item
             android:id="@+id/contact"
             android:checked="false"
             android:icon="@drawable/contactus"
-            android:title="Contact_us" />
+            android:title="Contact Us" />
 
 
 

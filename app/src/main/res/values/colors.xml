@@ -7,8 +7,8 @@
     <color name="emphasis">#31b6e7</color>
     <item name="blue" type="color">#FF33B5E5</item>
     <item name="purple" type="color">#FFAA66CC</item>
-    <item name="green" type="color">#FF99CC00</item>
-    <item name="orange" type="color">#FFFFBB33</item>
+    <item name="green" type="color">#205871</item>
+    <item name="orange" type="color">#FF8E1A</item>
     <item name="red" type="color">#FFFF4444</item>
     <item name="darkblue" type="color">#FF0099CC</item>
     <item name="darkpurple" type="color">#FF9933CC</item>
@@ -147,7 +147,7 @@
     <color name="MediumSpringGreen">#00FA9A</color>
     <color name="DarkTurquoise">#00CED1</color>
     <color name="DeepSkyBlue">#00BFFF</color>
-    <color name="DarkCyan">#008B8B</color>
+    <color name="DarkCyan">#205871</color>
     <color name="Teal">#008080</color>
     <color name="Green">#008000</color>
     <color name="DarkGreen">#006400</color>

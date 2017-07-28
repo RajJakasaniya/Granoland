@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("firstTime", false)) {
             // <---- run your one time code here
             Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.hi);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("firstTime", true);
             editor.commit();
-        }
+        }*/
 
         mViewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
                     //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
                     try {
                         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                        finish();
+                        //finish();
                     } catch (android.content.ActivityNotFoundException ex) {
                         Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
                     }
@@ -178,12 +178,7 @@ public class MainActivity extends AppCompatActivity
         //}
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -193,10 +188,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
 
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -225,13 +217,13 @@ public class MainActivity extends AppCompatActivity
             startActivity(in);
         } else if (id == R.id.nav_share) {
 
-            Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
+            //Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Granoland Tiles LLP");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Tiling elegance redefined click here to visit https://xyz.com/ ");
-            sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
-            sharingIntent.setType("image/jpg");
-            sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Download Granoland Tiles L.L.P. official android application :- https://play.google.com/store/apps/details?id=com.raj.granol");
+            //sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
+            sharingIntent.setType("text/plain");
+            //sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
             /*try {
@@ -317,7 +309,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void SaveImage(Bitmap finalBitmap) {
+    /*private void SaveImage(Bitmap finalBitmap) {
 
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -346,7 +338,7 @@ public class MainActivity extends AppCompatActivity
                         }
                     });
         }
-    }
+    }*/
     public boolean checkInternet(){
         boolean connected = false;
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);

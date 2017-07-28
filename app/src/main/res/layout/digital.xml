@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/digital"
-        android:background="@color/white"></WebView>
+        android:background="@color/white">
+    </WebView>
 
 </LinearLayout>

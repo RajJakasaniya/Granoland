@@ -7,9 +7,10 @@
     android:layout_height="match_parent"
     android:id="@+id/heading_item"
     android:text="Hello World"
+    android:paddingLeft="4dp"
     android:gravity="center_vertical"
     android:textColor="@color/white"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/DarkCyan"
     android:textSize="22dp"
     />
 </LinearLayout>

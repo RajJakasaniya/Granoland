@@ -22,6 +22,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,11 +41,16 @@ import java.io.FileOutputStream;
 
 public class About_us extends MainActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView tv2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
-
+        tv2=(TextView)findViewById(R.id.text2);
+        String fr=getResources().getString(R.string.front);
+        String bk= getResources().getString(R.string.back);
+        String ans=fr+" <b>"+bk+"</b>";
+        tv2.setText(Html.fromHtml(ans));
         Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbara);
         setSupportActionBar(mtoolbar);
 
@@ -67,7 +73,7 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
                     //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
                     try {
                         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                        finish();
+                        //finish();
                     } catch (android.content.ActivityNotFoundException ex) {
                         Toast.makeText(About_us.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
                     }
@@ -96,12 +102,7 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -111,9 +112,7 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -142,13 +141,13 @@ public class About_us extends MainActivity implements NavigationView.OnNavigatio
 
 
         } else if (id == R.id.nav_share) {
-            Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
+            //Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Granoland Tiles LLP");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Tiling elegance redefined click here to visit https://xyz.com/ ");
-            sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
-            sharingIntent.setType("image/jpg");
-            sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Download Granoland Tiles L.L.P. official android application :- https://play.google.com/store/apps/details?id=com.raj.granol");
+            //sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
+            sharingIntent.setType("text/plain");
+            //sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
             finish();
         } else if(id==R.id.contact) {

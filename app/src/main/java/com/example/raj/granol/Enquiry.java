@@ -11,9 +11,11 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,18 +25,26 @@ import android.widget.Toast;
  */
 
 public class Enquiry extends MainActivity {
-    EditText name,email,city,state,contact,description;
+    EditText name,email,city,state,contact,description,gst;
     Spinner country;
     Button submit;
-
+    LinearLayout ml;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enquiry);
+        ml=(LinearLayout)findViewById(R.id.ml);
+        try {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(ml.getWindowToken(), 0);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         name=(EditText)findViewById(R.id.name);
         email=(EditText)findViewById(R.id.email);
         city=(EditText)findViewById(R.id.city);
+        gst=(EditText)findViewById(R.id.gst);
         state=(EditText)findViewById(R.id.state);
         contact=(EditText)findViewById(R.id.contact);
         description=(EditText)findViewById(R.id.description);
@@ -46,6 +56,9 @@ public class Enquiry extends MainActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         country.setAdapter(adapter);
         country.setSelection(98);
+        name.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(name, InputMethodManager.SHOW_IMPLICIT);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,10 +67,13 @@ public class Enquiry extends MainActivity {
                         String em = "sales@granoland.com";/* Your email address here */
                         String subject = "Enquiry Form";/* Your subject here */
                         String[] CC = {"ashok@granoland.com","jaydeep@granoland.com"};
-                        String body = "Name :- "+name.getText().toString() + "\n" + "Email id :- "+ email.getText().toString() + "\n" +
-                                "Country :- "+country.getSelectedItem().toString() + "\n" +
-                                "State :- "+state.getText().toString() + "\n" +
+                        String body = "Name :- "+name.getText().toString() + "\n" +
+                                "Email id :- "+ email.getText().toString() + "\n" +
+                                "Contact Number :- "+contact.getText().toString() + "\n" +
+                                "GST Number :- "+gst.getText().toString() + "\n" +
                                 "City :- "+city.getText().toString() + "\n" +
+                                "State :- "+state.getText().toString() + "\n" +
+                                "Country :- "+country.getSelectedItem().toString() + "\n" +
                                 "Order Details :- "+description.getText().toString() + "\n";/* Your body here */
                         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + em));
                         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
@@ -120,14 +136,12 @@ public class Enquiry extends MainActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id != R.id.action_settings) {
+
             Intent i=new Intent(Enquiry.this,MainActivity.class);
             startActivity(i);
             finish();
             return true;
-        }
 
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

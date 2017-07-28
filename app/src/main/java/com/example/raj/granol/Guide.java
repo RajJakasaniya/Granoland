@@ -66,7 +66,8 @@ Button spec,calc,laying;
         spec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i=new Intent(Guide.this,specs.class);
+                startActivity(i);
             }
         });
 
@@ -89,7 +90,7 @@ Button spec,calc,laying;
                     //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
                     try {
                         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                        finish();
+                        //finish();
                     } catch (android.content.ActivityNotFoundException ex) {
                         Toast.makeText(Guide.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
                     }
@@ -117,13 +118,7 @@ Button spec,calc,laying;
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
 
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -133,10 +128,7 @@ Button spec,calc,laying;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
 
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -166,13 +158,13 @@ Button spec,calc,laying;
             startActivity(in);
             finish();
         } else if (id == R.id.nav_share) {
-            Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
+            //Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Granoland Tiles LLP");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Tiling elegance redefined click here to visit https://xyz.com/ ");
-            sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
-            sharingIntent.setType("image/png");
-            sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Download Granoland Tiles L.L.P. official android application :- https://play.google.com/store/apps/details?id=com.raj.granol");
+            //sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
+            sharingIntent.setType("text/plain");
+            //sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
             finish();
             /*try {

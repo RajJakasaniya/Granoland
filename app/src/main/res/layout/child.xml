@@ -8,9 +8,9 @@
         android:id="@+id/child_item"
         android:text="Hello World"
         android:textStyle="bold"
-        android:textColor="@color/DarkRed"
-        android:background="@color/Aqua"
-        android:textSize="19dp"
+        android:textColor="@color/orange"
+        android:paddingLeft="4dp"
+        android:textSize="20dp"
         android:gravity="center_vertical"
         />
 </LinearLayout>

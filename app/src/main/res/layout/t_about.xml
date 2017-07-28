@@ -10,201 +10,305 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-            <android.support.v7.widget.CardView
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 card_view:cardCornerRadius="30dp"
-                card_view:contentPadding="5dp"
-                android:id="@+id/cv">
+                card_view:contentPadding="5dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <TextView
+                        android:id="@+id/text5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:text="About_us"
-                        android:textColor="@color/DarkRed"
-                        android:textSize="45dp"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="Vision"
+                        android:textAlignment="center"
+                        android:textColor="@color/orange"
+                        android:textSize="31dp"
                         android:textStyle="bold"
-                        android:id="@+id/text1"
-                        android:textAlignment="center"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
+                        android:id="@+id/text6"
                         android:layout_width="match_parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/text2"
-                        android:text="With over 15 years of experience, Landgrace brings to customers their new venture in Vitrified Tiles: Granoland. With this, Landgrace has taken a step ahead in defining the art of fine living. Be mesmerized as designs from Granoland will set new benchmarks in ceramic tiles. With new technology in manufacturing, Granoland has arrived in Morbi, the Ceramic Capital of Gujarat, India."
-                        android:textSize="20dp"
-                        android:textColor="@color/Black"
-                        android:layout_margin="@dimen/activity_horizontal_margin"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="Eventually this shall make us a one-stop-shop for all kinds of ceramic products."
+                        android:textColor="@color/black"
+                        android:textSize="19dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/text3"
-                        android:text="An innovative approach in designing tiles, whose Quality &amp; Creativity is unmatched by any. With Double Charge Technology, supercharge your life with excellent design choices."
-                        android:textSize="20dp"
-                        android:textColor="@color/Black"
-                        android:textStyle="italic"
-                        android:layout_margin="@dimen/activity_horizontal_margin" />
+                        app:layout_constraintStart_toStartOf="parent" />
                 </LinearLayout>
-
             </android.support.v7.widget.CardView>
 
 
-            <android.support.v7.widget.CardView
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cv1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 card_view:cardCornerRadius="30dp"
-                card_view:contentPadding="5dp"
-                android:id="@+id/cv1">
+                card_view:contentPadding="5dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/text4"
-                    android:text="Mission"
-                    android:textSize="35dp"
-                    android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:textAlignment="center"
-                    android:textColor="@color/DarkRed"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/text12"
-                    android:text="We believe in taking customers into complete confidence by adherence to strict service standards &amp; delivery of products in a timely manner. "
-                    android:textSize="20dp"
-                    android:textColor="@color/Black"
-                    android:textStyle="bold"
-                    android:layout_margin="@dimen/activity_horizontal_margin"
-                    />
+                    <TextView
+                        android:id="@+id/text4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="Mission"
+                        android:textAlignment="center"
+                        android:textColor="@color/orange"
+                        android:textSize="31dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/text12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="@string/str"
+                        android:textColor="@color/Black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
 
-        <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            card_view:cardCornerRadius="30dp"
-            card_view:contentPadding="5dp"
-            android:id="@+id/cv2">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
-            <TextView
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cv"
                 android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/text5"
-                android:text="Vision"
-                android:textSize="35dp"
-                android:textColor="@color/DarkRed"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                />
+                android:layout_marginTop="5dp"
+                card_view:cardCornerRadius="30dp"
+                card_view:contentPadding="5dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/text6"
-                android:text="Eventually this shall make us a one-stop-shop for all kinds of ceramic products."
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:textColor="@color/black" />
-        </LinearLayout>
-        </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            card_view:cardCornerRadius="30dp"
-            card_view:contentPadding="5dp"
-            android:id="@+id/cv3">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/text7"
-                android:textAlignment="center"
-                android:text="Quality Policy"
-                android:textSize="35dp"
-                android:textColor="@color/DarkRed"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                tools:layout_constraintTop_creator="1"
-                tools:layout_constraintRight_creator="1"
-                app:layout_constraintRight_toRightOf="@+id/text6"
-                app:layout_constraintTop_toBottomOf="@+id/text6"
-                tools:layout_constraintLeft_creator="1"
-                app:layout_constraintLeft_toLeftOf="@+id/text6" />
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="About Us"
+                        android:textAlignment="center"
+                        android:textColor="@color/orange"
+                        android:textSize="31dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
+                    <TextView
+                        android:id="@+id/text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text=""
+                        android:textColor="@color/Black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="Granoland Tiles LLP, which is a limited liability company in India, is today one of the largest manufacturers of Vitrified tiles in India. We have Gross sales for financial year 2016-17 was Rs 58.31 crores. Our short term vision is to increase Turnover of the company by 20 to 30%."
+                        android:textColor="@color/Black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/c1"
                 android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/text8"
-                android:text="Continuous quality improvement requires a consummate investment in manpower, creative brains &amp; manufacturing machines. In this, we maintain a proactive approach, wherein differing points of view are well considered &amp; consumer inputs make us adopt the latest in everything."
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                tools:layout_constraintTop_creator="1"
-                tools:layout_constraintRight_creator="1"
-                app:layout_constraintRight_toRightOf="@+id/text7"
-                app:layout_constraintTop_toBottomOf="@+id/text7"
-                tools:layout_constraintLeft_creator="1"
-                app:layout_constraintLeft_toLeftOf="@+id/text7" />
-        </LinearLayout>
-        </android.support.v7.widget.CardView>
+                android:layout_marginTop="5dp"
+                card_view:cardCornerRadius="30dp"
+                card_view:contentPadding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tex1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="What Are We?"
+                        android:textAlignment="center"
+                        android:textColor="@color/orange"
+                        android:textSize="31dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tex2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="Granoland Tiles LLP (established in 2015) is among the top premium tile companies in India. Granoland Tiles LLP is an ISO 9001:2015 Certified Company. Granoland leadership is introducing innovative Inkjet Digital Printing Technology, Easy Color LB Dry Coloring System for full body, double loading feeding system, screen printing with roto drum technology, appel mack planarity control system, advanced neno technology with fully automatic imported machinery like Kilan, Dryer, Press, policing line, digital machine from Italy and China. Granoland have ultra modern plan spread over 47000 Sq. meter area located at Sartanpar-Matel Road, Morbi. We do provide direct employment to 500 employees and many more indirect employments across India with our business network. We are the permanent member of “Morbi Dhuva Ceramic Glaze Tiles Assoication”."
+                        android:textColor="@color/Black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tex3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="The Company manufactures a vast portfolio of tiles (Double Charge Vitrified, Heavy Duty Outdoor/Indoor Tiles). The Company has 11500 Sq. meter production capacity on daily basis. Our vision is to launch 600*1200mmPGVT/ GVT, 200*1200mm Wooden Strips, 300*1200mm Step &amp; Risers in near future."
+                        android:textColor="@color/Black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/c2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                card_view:cardCornerRadius="30dp"
+                card_view:contentPadding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/te1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Where Are We?"
+                        android:textAlignment="center"
+                        android:textColor="@color/orange"
+                        android:textSize="31dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/te2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="The Company is headquartered in Morbi, Ceramic city of India. Its strong distribution network comprises more than 400 direct dealers and 3800 sub-dealers across India."
+                        android:textColor="@color/Black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/te3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="The Company exports tiles to countries like Oman, Doha, Mexico, Canada, America, Mauritius, Saudi Arabia and other European countries."
+                        android:textColor="@color/Black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                card_view:cardCornerRadius="30dp"
+                card_view:contentPadding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="Our Businesses"
+                        android:textAlignment="center"
+                        android:textColor="@color/orange"
+                        android:textSize="31dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_constraintLeft_creator="1"
+                        tools:layout_constraintRight_creator="1"
+                        tools:layout_constraintTop_creator="1" />
+
+                    <TextView
+                        android:id="@+id/text8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="Granoland Group consists of Granoland Tiles LLP (2015), Landgrace Ceramic Pvt. Ltd. (2010). We do work with other companies on their demand, currently we are working with H R Johnson since one year. We have registered and trademarked brand name like “Granoland” and “Landgrace”."
+                        android:textColor="@color/black"
+                        android:textSize="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/text7"
+                        app:layout_constraintRight_toRightOf="@+id/text7"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text7"
+                        tools:layout_constraintLeft_creator="1"
+                        tools:layout_constraintRight_creator="1"
+                        tools:layout_constraintTop_creator="1" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
 

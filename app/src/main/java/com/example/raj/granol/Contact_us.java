@@ -32,6 +32,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -40,7 +42,7 @@ import java.io.FileOutputStream;
  */
 
 public class Contact_us extends MainActivity implements NavigationView.OnNavigationItemSelectedListener {
-    TextView dj,kb;
+    TextView dj,kb,site;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
 
         dj=(TextView)findViewById(R.id.dj);
         kb=(TextView)findViewById(R.id.kb);
+        site=(TextView)findViewById(R.id.site);
 
         String udata="+91 7069600011";
         SpannableString content = new SpannableString(udata);
@@ -81,6 +84,16 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
             }
         });
 
+
+        site.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.granoland.com"));
+                startActivity(browserIntent);
+            }
+        });
+
+
         Toolbar mtoolbar = (Toolbar)findViewById(R.id.toolbarcu);
         setSupportActionBar(mtoolbar);
 
@@ -103,7 +116,7 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
                     //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
                     try {
                         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                        finish();
+                        //finish();
                     } catch (android.content.ActivityNotFoundException ex) {
                         Toast.makeText(Contact_us.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
                     }
@@ -129,12 +142,7 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -144,10 +152,7 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
 
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -178,13 +183,13 @@ public class Contact_us extends MainActivity implements NavigationView.OnNavigat
             startActivity(in);
             finish();
         } else if (id == R.id.nav_share) {
-            Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
+            //Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Granoland Tiles LLP");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Tiling elegance redefined click here to visit https://xyz.com/ ");
-            sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
-            sharingIntent.setType("image/*");
-            sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Download Granoland Tiles L.L.P. official android application :- https://play.google.com/store/apps/details?id=com.raj.granol");
+            //sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
+            sharingIntent.setType("text/plain");
+            //sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 finish();
         } else if(id==R.id.contact) {

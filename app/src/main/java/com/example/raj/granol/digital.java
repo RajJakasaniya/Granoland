@@ -131,13 +131,15 @@ public class digital extends MainActivity {
             try {
                 Toast.makeText(digital.this, "Opening PDF", Toast.LENGTH_SHORT).show();
                 startActivity(pdfIntent);
+                finish();
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(digital.this, "No Application available to view PDF", Toast.LENGTH_SHORT).show();
             }
         }else {
             //Toast.makeText(digital.this, "File Not Downloaded", Toast.LENGTH_SHORT).show();
 
-
+            url = "https://firebasestorage.googleapis.com/v0/b/granoland-ee8e9.appspot.com/o/LG_Digital%20Parking.pdf?alt=media&token=51b87f30-05f7-4303-be89-1eeb0b4d8fcb";
+            haveStPermission();
 
 
 
@@ -166,14 +168,12 @@ public class digital extends MainActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id != R.id.action_settings) {
+
             Intent i=new Intent(digital.this,Collection.class);
             startActivity(i);
             finish();
             return true;
-        }
 
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -101,18 +101,25 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
                     i.putExtra("selected", selected);
                     i.putExtra("parent",(String) myadapter.getGroup(groupPosition));
                     startActivity(i);
-                    finish();
+
                 }else if(selected.equals("Sparkle Series") || selected.equals("Natural Series")){
                     Intent i = new Intent(Collection.this,display.class);
                     i.putExtra("selected", selected);
                     i.putExtra("parent",(String) myadapter.getGroup(groupPosition));
                     startActivity(i);
-                    finish();
-                }else{
 
+                }else if(selected.equals("14mm")){
+                    Intent i = new Intent(Collection.this,Duty.class);
+                    i.putExtra("selected", selected);
+                    i.putExtra("parent",(String) myadapter.getGroup(groupPosition));
+                    startActivity(i);
+
+                }else if(selected.equals("20mm")) {
+                    Intent i = new Intent(Collection.this, heavyduty.class);
+                    i.putExtra("selected", selected);
+                    i.putExtra("parent", (String) myadapter.getGroup(groupPosition));
+                    startActivity(i);
                 }
-
-
                 return true;
             }
         });
@@ -145,7 +152,7 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
                     //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
                     try {
                         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                        finish();
+                        //finish();
                     } catch (android.content.ActivityNotFoundException ex) {
                         Toast.makeText(Collection.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
                     }
@@ -172,12 +179,7 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -187,9 +189,7 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -218,13 +218,13 @@ public class Collection extends MainActivity  implements NavigationView.OnNaviga
             startActivity(in);
             finish();
         } else if (id == R.id.nav_share) {
-            Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
+            //Uri pictureUri = Uri.parse("/storage/emulated/0/saved_images/image.jpg");
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Granoland Tiles LLP");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Tiling elegance redefined click here to visit https://xyz.com/ ");
-            sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
-            sharingIntent.setType("image/*");
-            sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Download Granoland Tiles L.L.P. official android application :- https://play.google.com/store/apps/details?id=com.raj.granol");
+            //sharingIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
+            sharingIntent.setType("text/plain");
+            //sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
             finish();
         } else if(id==R.id.contact) {

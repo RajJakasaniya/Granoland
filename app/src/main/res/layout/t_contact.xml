@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        card_view:cardCornerRadius="30dp"
+        card_view:cardCornerRadius="20dp"
         card_view:contentPadding="5dp"
         android:id="@+id/cv">
         <LinearLayout
@@ -45,7 +45,7 @@
             android:text="Corporate Office"
             android:textSize="32dp"
             android:textAlignment="center"
-            android:textColor="@color/OrangeRed"
+            android:textColor="@color/orange"
             android:textStyle="bold"
             android:id="@+id/text1"/>
             <TextView
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            card_view:cardCornerRadius="30dp"
+            card_view:cardCornerRadius="20dp"
             card_view:contentPadding="5dp"
             android:id="@+id/cv2">
         <LinearLayout
@@ -108,7 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            card_view:cardCornerRadius="30dp"
+            card_view:cardCornerRadius="20dp"
             card_view:contentPadding="5dp"
             android:id="@+id/cv3">
             <LinearLayout
@@ -179,7 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            card_view:cardCornerRadius="30dp"
+            card_view:cardCornerRadius="20dp"
             card_view:contentPadding="5dp"
             android:id="@+id/cv4">
         <LinearLayout
@@ -213,7 +213,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            card_view:cardCornerRadius="30dp"
+            card_view:cardCornerRadius="20dp"
             card_view:contentPadding="5dp"
             android:id="@+id/cv5">
         <LinearLayout
@@ -232,7 +232,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text11"
+        android:id="@+id/site"
         android:textAlignment="center"
         android:text="www.granoland.com"
         android:textSize="20dp"
